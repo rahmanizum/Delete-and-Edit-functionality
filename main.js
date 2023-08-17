@@ -9,27 +9,38 @@ function addItem(e){
  //Get input value
  const newItem= document.getElementById('item');
 
+ //create new div
+const div= document.createElement('div');
+div.className='btn-group';
+ 
 //create new li element 
 const li= document.createElement('li');
 
 //Add class
 li.className='list-group-item d-flex justify-content-between';
-li.className='list-group-item d-flex justify-content-between';
 //Add text node with input value
 li.appendChild(document.createTextNode(newItem.value));
 
-//create button 
+//create delete button 
 const btn= document.createElement('button');
-btn.className='btn btn-danger btn-sm float-right delete';
+btn.className='btn btn-outline-danger btn-sm float-right delete rounded-2';
 btn.appendChild(document.createTextNode('x'));
 
+//create add button 
+const editbtn= document.createElement('button');
+editbtn.className='btn btn-outline-success btn-sm float-right edit me-2 rounded-2';
+editbtn.appendChild(document.createTextNode('edit'));
 //btn append to li 
-li.appendChild(btn);
+div.appendChild(editbtn);
+div.appendChild(btn);
+
+//li append to div
+li.appendChild(div);
 
 //append li to itemList
-
 itemList.appendChild(li);
 
+console.log(div);
 // clear the field
 newItem.value='';
 }
@@ -102,25 +113,3 @@ function filterItems(e){
 //     }
 //   })
 // }
-
-
-// edit event
-
-itemList.addEventListener('click',editItem);
-
-function editItem(e){
-    e.preventDefault();
-    const editSpace= document.getElementById('editSpace');
-    const edittext= document.getElementById('editText');
-        if(e.target.classList.contains('edit')){
-            editSpace.classList.remove('d-none');
-        } 
-        console.log(e); 
-    const editForm=document.getElementById('editForm');
-    editForm.addEventListener('submit',editFunction);
-    function editFunction(h){
-        h.preventDefault();
-        console.log(e.target.parentElement.parentElement.innerHTML);
-    }
-}
-
