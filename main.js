@@ -14,7 +14,7 @@ const li= document.createElement('li');
 
 //Add class
 li.className='list-group-item d-flex justify-content-between';
-
+li.className='list-group-item d-flex justify-content-between';
 //Add text node with input value
 li.appendChild(document.createTextNode(newItem.value));
 
@@ -29,7 +29,7 @@ li.appendChild(btn);
 //append li to itemList
 
 itemList.appendChild(li);
-console.log(li);
+
 // clear the field
 newItem.value='';
 }
@@ -45,3 +45,60 @@ function removeItem(e){
         }
     }
 }
+
+// filter event 
+const filter = document.getElementById('filter');
+filter.addEventListener('keyup',filterItems);
+
+//define filterFunction
+
+function filterItems(e){
+    //convert text to lowercase
+    const text= e.target.value.toLowerCase();
+    
+    //Get all item in HTML collections
+    const items=itemList.getElementsByTagName('li');
+
+    //convert HTML collectons into Array
+    const itemsArr=Array.from(items);
+    //iterate through array
+    itemsArr.forEach(blockdisplay);
+ 
+    //define blockdisplay
+
+    function blockdisplay(value){
+       const itemName=value.firstChild.textContent;
+       if(itemName.toLowerCase().indexOf(text)!=-1){
+        value.classList.add('d-flex');
+        value.style.display='block';
+        console.log(value);
+       }
+       else{
+        value.classList.remove('d-flex');
+        value.style.display='none';
+       }
+    }
+}
+
+//or you can simplye write 
+// function filterItems(e){
+//     //convert text to lowercase
+//     const text= e.target.value.toLowerCase();
+    
+//     //Get all item in HTML collections
+//     const items=itemList.getElementsByTagName('li');
+
+//     //convert HTML collectons into Array
+//   Array.from(items).forEach(function(value){
+//     const eachitem=value.firstChild.textContent.toLocaleLowerCase();
+//     if(eachitem.indexOf(text)!=-1){
+//         value.classList.add('d-flex');
+//         value.style.display='block';   
+//     }
+//     else
+//     {
+//         value.classList.remove('d-flex');
+//         value.style.display='none';   
+//     }
+//   })
+// }
