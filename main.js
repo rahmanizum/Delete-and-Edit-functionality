@@ -102,3 +102,25 @@ function filterItems(e){
 //     }
 //   })
 // }
+
+
+// edit event
+
+itemList.addEventListener('click',editItem);
+
+function editItem(e){
+    e.preventDefault();
+    const editSpace= document.getElementById('editSpace');
+    const edittext= document.getElementById('editText');
+        if(e.target.classList.contains('edit')){
+            editSpace.classList.remove('d-none');
+        } 
+        console.log(e); 
+    const editForm=document.getElementById('editForm');
+    editForm.addEventListener('submit',editFunction);
+    function editFunction(h){
+        h.preventDefault();
+        console.log(e.target.parentElement.parentElement.innerHTML);
+    }
+}
+
