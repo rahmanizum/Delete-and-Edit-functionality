@@ -41,7 +41,7 @@ function removeItem(e){
     e.preventDefault();
     if(e.target.classList.contains('delete')){
         if(confirm('Are you Sure?')){
-            e.target.parentElement.remove();
+            e.target.parentElement.parentElement.remove();
         }
     }
 }
