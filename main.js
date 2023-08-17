@@ -8,6 +8,7 @@ function addItem(e){
 
  //Get input value
  const newItem= document.getElementById('item');
+ const newDescription= document.getElementById('decription');
 
  //create new div
 const div= document.createElement('div');
@@ -19,7 +20,7 @@ const li= document.createElement('li');
 //Add class
 li.className='list-group-item d-flex justify-content-between';
 //Add text node with input value
-li.appendChild(document.createTextNode(newItem.value));
+li.appendChild(document.createTextNode(`${newItem.value} ${newDescription.value}`));
 
 //create delete button 
 const btn= document.createElement('button');
@@ -82,7 +83,6 @@ function filterItems(e){
        if(itemName.toLowerCase().indexOf(text)!=-1){
         value.classList.add('d-flex');
         value.style.display='block';
-        console.log(value);
        }
        else{
         value.classList.remove('d-flex');
