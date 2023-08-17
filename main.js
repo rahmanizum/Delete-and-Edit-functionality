@@ -30,6 +30,18 @@ li.appendChild(btn);
 
 itemList.appendChild(li);
 console.log(li);
+// clear the field
+newItem.value='';
 }
 
+// delete event
+itemList.addEventListener('click',removeItem);
 
+function removeItem(e){
+    e.preventDefault();
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are you Sure?')){
+            e.target.parentElement.remove();
+        }
+    }
+}
